@@ -1,0 +1,146 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: bzzm
+  name: 不知郑码
+  version: "0.4"
+  author:
+    - 发明人 郑易里教授
+    - 方案制作 不知路人
+  description:
+    超大字符集郑码
+    敲 ` 键进入拼音反查
+    简入繁出 需要安装 opencc 简繁转换词典
+  dependencies:
+    - pinyin_simp
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: extended_charset
+    states: [ 通用, 增广 ]
+  - name: zh_trad
+    states: [ 常规, 繁体 ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - affix_segmentor@pinyin
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - table_translator
+    - script_translator@pinyin
+  filters:
+    - simplifier@tradition
+    - uniquifier
+    - reverse_lookup_filter@zhengma_lookup
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  max_code_length: 4
+## 最大码长
+  auto_select: true
+## 自动上屏
+
+translator:
+  dictionary: &dict
+    bzzm
+  enable_charset_filter: true
+  enable_user_dict: false
+## 用户字典（记录动态字词频，用户词及习惯等），开启 true，关闭 false
+  enable_sentence: true
+#  enable_encoder: true
+#  encode_commit_history: true
+#  max_phrase_length: 5
+#  preedit_format:
+#    - xform/^([a-z]*)$/$1〔\U$1\E〕/
+#    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|一土王扌艹木石匚虫口日目亻八金月鱼言疒忄氵辶马阝纟|"
+#  comment_format:
+#    - "xlit|abcdefghijklmnopqrstuvwxyz~|一土王扌艹木石匚虫口日目亻八金月鱼言疒忄氵辶马阝纟～|"
+#  initial_quality: 0.75
+## 调整编译器出字的优先度
+
+custom_phrase:
+## 词典名为空，不加载固态词典
+  dictionary: ""
+## 对应的文件是用户文件夹/bzzm_custom_phrase.txt
+  user_dict: bzzm_custom_phrase
+  db_class: stabledb
+  enable_sentence: false
+#  initial_quality: 0.75
+
+#abc_segmentor:
+#  extra_tags:
+#    - pinyin
+## 若开启与拼音混输删除上三行的 #
+
+pinyin:
+  tag: pinyin
+  dictionary: pinyin_simp
+  prefix: "`"
+  suffix: ";"
+  tips: 【拼音】
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+  closing_tips: 【郑码】
+#  initial_quality: 0.2
+
+tradition:
+  opencc_config: zhs2zht.ini
+  option_name: zh_trad
+  tags: [ abc ]
+  tips: all
+
+zhengma_lookup:
+  tags: [ abc, pinyin ]
+  dictionary: *dict
+  overwrite_comment: false
+  comment_format:
+    - "xform/$/」/"
+    - "xform/^/「/"
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { when: always, accept: Contral+Shift+4, toggle: extended_charset }
+    - { when: always, accept: Contral+Shift+5, toggle: zh_trad }
+    - { when: always, accept: Contral+Shift+dollar, toggle: extended_charset }
+    - { when: always, accept: Contral+Shift+percent, toggle: zh_trad }
+
+recognizer:
+  import_preset: default
+  patterns:
+    punct: "^/[0-9]*[a-z]*$"
+    pinyin: "`[a-z']*;?$"
+
+menu:
+  page_size: 7
+## 设置候选项数
+
+style:
+  horizontal: false
+## 竖排false，横排true

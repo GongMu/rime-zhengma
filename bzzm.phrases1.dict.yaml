@@ -1,0 +1,243 @@
+# dictionary: bzzm schema
+# encoding: utf-8
+#
+# [ Description ]
+#    词组码表
+#
+# [ Changelog ]
+#    * 214条二简词（源于郑码6.6）
+#
+
+---
+name: bzzm.phrases
+version: "1.0"
+sort: original
+use_preset_vocabulary: false
+columns:
+  - text
+  - code
+  - stem
+encoder:
+  rules:
+    - length_equal: 2
+      formula: "AaAbBaBb"
+    - length_equal: 3
+      formula: "AaBaBbCa"
+    - length_in_range: [4, 10]
+      formula: "AaBaCaDa"
+...
+
+一下	aa
+一起	ab
+平静	ac
+形成	ah
+严重	am
+一般	ap
+一月	aq
+干部	as
+政府	at
+下半年	au
+天津	av
+天津市	av
+一定	aw
+开展	ax
+增长	bc
+规模	bf
+动员	bj
+项目	bl
+增值	bn
+喜爱	bp
+二月	bq
+五月	bq
+专门	bt
+表现	cc
+职权	cf
+现在	cg
+职员	cj
+帮助	cl
+现代	cn
+现金	cp
+现状	ct
+表演	cv
+丰富	cw
+提取	dc
+指挥	dd
+扩大	dg
+打败	dl
+执行	do
+事务	dr
+推广	dt
+事情	du
+基本	ef
+某些	ei
+栽种	em
+基金	ep
+共计	es
+期间	et
+朝着	eu
+整理	fc
+需求	fd
+需要	ff
+整顿	fh
+要点	fi
+配合	fo
+相反	fp
+标准	ft
+档案	fw
+尤其	ge
+不要	gf
+大量	gk
+面貌	gp
+态度	gt
+大学	gv
+大家	gw
+友好	gz
+成长	hc
+成本	hf
+成套	hg
+感到	hh
+成份	hn
+到底	ht
+成为	hu
+感觉	hv
+成绩	hz
+上班	ic
+战术	if
+上面	ig
+占用	il
+频繁	im
+督促	in
+此后	ip
+此刻	is
+战斗	it
+上半年	iu
+上海	iv
+上海市	iv
+上述	iw
+上层	ix
+上级	iz
+国营	je
+只要	jf
+只有	jg
+中国	jj
+中华	jn
+国产	js
+中间	jt
+因为	ju
+国家	jw
+当成	kh
+影响	kj
+常用	kl
+最佳	kn
+最后	kp
+时间	kt
+同样	lf
+具有	lg
+周围	lj
+具体	ln
+内脏	lq
+幅度	lt
+目前	lu
+同学	lv
+重大	mg
+我们	mn
+先后	mp
+复杂	mq
+科学	mv
+你们	nn
+做法	nv
+公共	oe
+分析	of
+得到	oh
+全国	oj
+会见	ol
+合作	on
+公斤	op
+得胜	oq
+很多	or
+彻底	ot
+很快	ou
+分清	ov
+后来	pb
+采取	pc
+所需	pf
+反射	pn
+银行	po
+钢铁	pp
+反应	pt
+后悔	pu
+所以	pz
+几百	qa
+朋友	qg
+几时	qk
+肌肉	ql
+月份	qn
+杂质	qp
+服务	qr
+风波	qv
+胜过	qw
+几经	qz
+各地	rb
+争取	rc
+解散	re
+备有	rg
+各种	rm
+条件	rn
+然后	rp
+名胜	rq
+解决	rt
+各类	ru
+外汇	rv
+忽视	rw
+新的	sd
+方面	sg
+高度	st
+次要	tf
+广告	tm
+应付	tn
+资金	tp
+决胜	tq
+北京	ts
+北京市	ts
+状况	tt
+资料	tu
+决定	tw
+关于	ua
+情报	ud
+为此	ui
+性质	up
+快乐	ur
+关注	uv
+总之	uw
+清理	vc
+举报	vd
+满足	vj
+举行	vo
+学院	vy
+实用	wl
+它们	wn
+既要	xf
+矛盾	xp
+皮肤	xq
+对比	xr
+预测	xv
+又能	xz
+及其	ye
+飞机	yf
+强大	yg
+费用	yl
+民航	yp
+除外	yr
+办法	yv
+已经	yz
+参与	za
+出现	zc
+发挥	zd
+结束	zf
+出面	zg
+如此	zi
+以便	zn
+以后	zp
+能够	zr
+练习	zt
+经济	zv
