@@ -126,10 +126,10 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
-    - { when: always, accept: Contral+Shift+4, toggle: extended_charset }
-    - { when: always, accept: Contral+Shift+5, toggle: zh_trad }
-    - { when: always, accept: Contral+Shift+dollar, toggle: extended_charset }
-    - { when: always, accept: Contral+Shift+percent, toggle: zh_trad }
+    - { when: always, accept: Control+Shift+4, toggle: extended_charset }
+    - { when: always, accept: Control+Shift+5, toggle: zh_trad }
+    - { when: always, accept: Control+Shift+dollar, toggle: extended_charset }
+    - { when: always, accept: Control+Shift+percent, toggle: zh_trad }
 
 recognizer:
   import_preset: default
